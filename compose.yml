@@ -1,0 +1,20 @@
+services:
+  php:
+
+    build: .
+
+    volumes:
+      - .:/var/www/html
+
+    ports:
+      - 8095:80
+
+    command: >
+      bash -c "
+      if [ ! -f composer.json ]; then
+        composer require dompdf/dompdf;
+      else
+        composer install;
+      fi &&
+      apache2-foreground
+      "
