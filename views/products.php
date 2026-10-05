@@ -117,8 +117,25 @@ $_SESSION['user']['rol'] == 'admin' ? $admin = true : $admin = false;
                         <!-- Boto per afegir al carret fent servir POST -->
                         <div class="d-flex justify-content-center gap-3">
 
-                            
-                           
+                            <?php if ($admin) : ?>
+                                <a
+                                    href="../controllers/edit_product_controller.php?id=<?= $product['id'] ?>"
+                                    class="btn btn-warning">
+
+                                    <i class="bi bi-cart-plus"></i>
+                                    Editar
+                                </a>
+                                <a
+                                    href=""
+                                    class="btn btn-danger">
+
+                                    <i class="bi bi-cart-plus"></i>
+                                    Borrar
+                                </a>
+                            <?php endif; ?>
+
+
+                            <?php if (!$admin) : ?>
                                 <a
                                     href="../controllers/add_cart_controller.php?id=<?= $product['id'] ?>"
                                     class="btn btn-primary">
@@ -126,7 +143,8 @@ $_SESSION['user']['rol'] == 'admin' ? $admin = true : $admin = false;
                                     <i class="bi bi-cart-plus"></i>
                                     <?= $text['add_to_cart'] ?>
                                 </a>
-                           
+                            <?php endif; ?>
+
 
                         </div>
 

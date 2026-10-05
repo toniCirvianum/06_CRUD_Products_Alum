@@ -5,7 +5,7 @@ $text = [];
 include("../includes/header.php");
 include("../includes/navbar_app.php");
 
-$product = $_SESSION['edit_product'] ?? null;
+$product = $_SESSION['productToEdit'] ?? null;
 
 if ($product == null) {
     header("Location: ./products.php");
